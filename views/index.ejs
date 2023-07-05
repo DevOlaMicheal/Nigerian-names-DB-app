@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+
+<body>
+
+
+   <%- include('./partials/nav.ejs') %>
+
+    <div class="blogs content">
+        <h2>All blogs</h2>
+
+        <% if (names.length > 0) { %>
+            <% names.map(name => { %>
+                <h3 class="title"><%= name.title %></h3>
+                <h3 class="title"><%= name.state %></h3>
+                <p class="snippet"><%= name.description %></p>
+           <% }); %>
+        <% } else { %>
+            <P>there are no blogs to display</P>
+        <% } %>
+    </div>
+
+   <%- include('./partials/footer.ejs') %>
+
+</body>
+</html>
