@@ -1,0 +1,18 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="details content">
+    <h2><%= name.title %></h2>
+    <div class="content">
+        <h3>Meaning: <%= name.meaning %></h3>
+      <p><%= name.title %> is usually given to people from <%= name.state %> , <%= name.description %></p>
+    </div>
+    <a class="delete" data-doc="<%= name._id %>">delete</a>
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>

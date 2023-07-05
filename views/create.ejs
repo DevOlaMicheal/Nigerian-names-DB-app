@@ -8,13 +8,15 @@
    <%- include('./partials/nav.ejs') %>
 
     <div class="create-blog content">
-        <form>
-        <label for="title">Blog title: </label>
-        <input type="text" name="" id="title" required>
-         <label for="snippet">Blog snippet: </label>
-        <input type="text" name="" id="snippet" required>
-        <label for="body">Blog Body: </label>
-        <textarea name="" id="body" required></textarea>
+        <form action="/names" method="POST">
+        <label for="title"> Name: </label>
+        <input type="text" name="title" id="title" required>
+         <label for="snippet">Your state of origin: </label>
+        <input type="text" name="state" id="snippet" required>
+        <label for="snippet">Meaning of Name: </label>
+        <input type="text" name="meaning" id="snippet" required>
+        <label for="body"A short of description of the Name: </label>
+        <textarea name="description" id="body" placeholder="what you know about the name, anything interesting" required></textarea>
 
         <button>Submit</button>
     </form>
