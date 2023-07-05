@@ -44,7 +44,7 @@ app.get('/names/create', (req, res) => {
 })
 
 app.get('/names/:id', (req, res) => {
-    const id = req.params.id;
+    const id = req.params.id
     
     Name.findById(id)
     .then(result => {

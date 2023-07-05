@@ -12,7 +12,7 @@
 
         <% if (names.length > 0) { %>
             <% names.map(name => { %>
-                <a class="single" href="names/ <%= name.id %>">
+                <a class="single" href="/names/<%= name._id %>">
                 <h3 class="title"><%= name.title %></h3>
                 <h3 class="title"><%= name.state %></h3>
                 <p class="snippet"><%= name.meaning %></p>
