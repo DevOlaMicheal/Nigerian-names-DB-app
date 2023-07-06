@@ -62,6 +62,16 @@ app.post('/names', (req, res) => {
      })
 })
 
+app.delete('/names/:id', (req, res) => {
+    const id = req.params.id;
+
+    Name.findByIdAndDelete(id)
+    .then((result) => {
+        res.json({ redirect: result })
+    }).catch(err => {
+        console.log(err)
+    })
+})
 
 app.use((req, res) => {
     res.status(404).render('404', { title: "Error-404" })
