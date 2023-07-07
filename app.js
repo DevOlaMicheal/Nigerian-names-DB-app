@@ -1,7 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
-const Name = require('./models/names')
+const nameRoutes = require('./routes/tndbRoutes')
 const app = express()
 
 
@@ -29,49 +29,9 @@ app.get('/', (req, res) =>  {
 app.get('/about', (req, res) => {
     res.render('about', { title: "About" })
 })
-// name Handlers
 
-app.get('/names', (req, res) => {
-    Name.find().sort({ createdAt: -1})
-    .then(result => {
-        res.render('index', { title: 'Home', names: result})
-    }).catch(err => console.log(err))
-})
-
-
-app.get('/names/create', (req, res) => {
-    res.render('create', { title: "AddNew" })
-})
-
-app.get('/names/:id', (req, res) => {
-    const id = req.params.id
-    
-    Name.findById(id)
-    .then(result => {
-        res.render('details', { title: 'name Details', name: result })
-    }).catch(err => console.log(err))
-})
-
-app.post('/names', (req, res) => {
-     const name = new Name(req.body)
-     
-     name.save().then(result => {
-        res.render('index', { title: 'Home', names: result })
-     }).catch(err => {
-        console.log(err)
-     })
-})
-
-app.delete('/names/:id', (req, res) => {
-    const id = req.params.id;
-
-    Name.findByIdAndDelete(id)
-    .then((result) => {
-        res.json({ redirect: result })
-    }).catch(err => {
-        console.log(err)
-    })
-})
+// routes
+app.use('/names', nameRoutes)
 
 app.use((req, res) => {
     res.status(404).render('404', { title: "Error-404" })
