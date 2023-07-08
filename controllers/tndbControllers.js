@@ -3,12 +3,12 @@ const Name = require('../models/names')
 const getallnames_controller = (req, res) => {
     Name.find().sort({ createdAt: -1})
     .then(result => {
-        res.render('index', { title: 'Home', names: result})
+        res.render('names/index', { title: 'Home', names: result})
     }).catch(err => console.log(err))
 }
 
 const addname_controller =  (req, res) => {
-    res.render('create', { title: "AddNew" })
+    res.render('names/create', { title: "AddNew" })
 }
 
 const getsinglename_controller = (req, res) => {
@@ -16,8 +16,8 @@ const getsinglename_controller = (req, res) => {
     
     Name.findById(id)
     .then(result => {
-        res.render('details', { title: 'name Details', name: result })
-    }).catch(err => console.log(err))
+        res.render('names/details', { title: 'name Details', name: result })
+    }).catch(err => res.status(404).render('404', { title: 'name not found'}))
 }
 
 const postname_controller = (req, res) => {

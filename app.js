@@ -2,7 +2,9 @@ const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const nameRoutes = require('./routes/tndbRoutes')
+const env = require('dotenv').config()
 const app = express()
+
 
 
 app.set('view engine', 'ejs')
@@ -10,9 +12,9 @@ app.use(express.static('public'))
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true}));
 
-const uri = "mongodb+srv://oladev:ola.ejs@nodecrash.nltrmcu.mongodb.net/tndb?retryWrites=true&w=majority";
 
-mongoose.connect(uri)
+
+mongoose.connect(process.env.DB_URI)
     .then(result => {
         const port = 3000
         app.listen(port, () => console.log(`app listening on port ${port}!`))
