@@ -33,7 +33,7 @@ app.get('/about', (req, res) => {
 })
 
 app.get('/contributors', (req, res) => {
-    res.render('about', { title: "contributors" })
+    res.send('contributors page')
 })
 // routes
 app.use('/names', nameRoutes)
